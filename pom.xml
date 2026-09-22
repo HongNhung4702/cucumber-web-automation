@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+            http://maven.apache.org/POM/4.0.0
+            https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hongnhung</groupId>
+    <artifactId>cucumber-web-automation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>Cucumber Web Automation</name>
+
+    <properties>
+
+        <!-- Java -->
+        <maven.compiler.release>17</maven.compiler.release>
+
+        <!-- Encoding -->
+        <project.build.sourceEncoding>
+            UTF-8
+        </project.build.sourceEncoding>
+
+        <project.reporting.outputEncoding>
+            UTF-8
+        </project.reporting.outputEncoding>
+
+        <!-- Dependencies -->
+        <cucumber.version>
+            7.34.8
+        </cucumber.version>
+
+        <selenium.version>
+            4.49.0
+        </selenium.version>
+
+        <junit.version>
+            6.1.2
+        </junit.version>
+
+        <allure.version>
+            2.35.3
+        </allure.version>
+
+        <!-- Maven plugins -->
+        <maven.compiler.plugin.version>
+            3.16.0
+        </maven.compiler.plugin.version>
+
+        <maven.surefire.plugin.version>
+            3.6.0
+        </maven.surefire.plugin.version>
+
+        <allure.maven.plugin.version>
+            3.0.2
+        </allure.maven.plugin.version>
+
+        <allure.report.version>
+            2.39.0
+        </allure.report.version>
+
+    </properties>
+
+
+    <!-- =====================================================
+         Dependency Management
+         ===================================================== -->
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <!-- Cucumber BOM -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-bom</artifactId>
+                <version>${cucumber.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- JUnit BOM -->
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Allure BOM -->
+            <dependency>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-bom</artifactId>
+                <version>${allure.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+
+    <!-- =====================================================
+         Dependencies
+         ===================================================== -->
+
+    <dependencies>
+
+        <!-- Cucumber -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- JUnit Platform -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- Allure -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit-platform</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <!-- =====================================================
+         Build
+         ===================================================== -->
+
+    <build>
+
+        <plugins>
+
+            <!-- Java Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>
+                    ${maven.compiler.plugin.version}
+                </version>
+
+                <configuration>
+                    <release>
+                        ${maven.compiler.release}
+                    </release>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+
+            <!-- Test Execution -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>
+                    ${maven.surefire.plugin.version}
+                </version>
+
+                <configuration>
+                    <useModulePath>false</useModulePath>
+
+                    <argLine>
+                        -Dfile.encoding=UTF-8
+                    </argLine>
+                </configuration>
+            </plugin>
+
+
+            <!-- Allure Report -->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>
+                    ${allure.maven.plugin.version}
+                </version>
+
+                <configuration>
+
+                    <!--
+                        Dùng Allure Report 2 ổn định,
+                        phù hợp với Allure Java adapter hiện tại.
+                    -->
+                    <reportVersion>
+                        ${allure.report.version}
+                    </reportVersion>
+
+                    <!--
+                        target/allure-results
+                    -->
+                    <resultsDirectory>
+                        allure-results
+                    </resultsDirectory>
+
+                    <!--
+                        HTML report cuối cùng:
+                        target/allure-report
+                    -->
+                    <reportDirectory>
+                        ${project.build.directory}/allure-report
+                    </reportDirectory>
+
+                    <!--
+                        Tạo một HTML tự chứa để dễ mở,
+                        lưu và trình bày đồ án.
+                    -->
+                    <singleFile>true</singleFile>
+
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>
