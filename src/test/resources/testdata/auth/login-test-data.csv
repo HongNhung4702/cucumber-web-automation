@@ -1,0 +1,8 @@
+
+testCaseId,username,password,expectedResult,expectedMessage
+TC_01,${test.username},${test.password},SUCCESS,
+TC_02,${test.username},invalid_password_for_test,INVALID_CREDENTIALS,Tên đăng nhập hoặc mật khẩu không chính xác
+TC_03,invalid_user_for_test,${test.password},INVALID_CREDENTIALS,Tên đăng nhập hoặc mật khẩu không chính xác
+TC_04,,${test.password},PASSWORD_MASKED,
+TC_05,${test.username},${test.password},SESSION_PROTECTED,
+TC_06,${test.username},${test.password},SESSION_PROTECTED,

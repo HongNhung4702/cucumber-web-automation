@@ -1,9 +1,11 @@
+
 package com.hongnhung.cucumberweb.pages.auth;
 
 import com.hongnhung.cucumberweb.config.ConfigManager;
 import com.hongnhung.cucumberweb.driver.DriverManager;
 import com.hongnhung.cucumberweb.pages.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public final class LoginPage extends BasePage {
 
@@ -53,34 +55,53 @@ public final class LoginPage extends BasePage {
         click(LOGIN_BUTTON);
     }
 
-    public void login(
-            String username,
-            String password
-    ) {
+    public void login(String username, String password) {
         enterUsername(username);
         enterPassword(password);
         clickLogin();
     }
 
     public String getInvalidCredentialsMessage() {
-        return getText(
-                INVALID_CREDENTIALS_MESSAGE
-        );
+        return getText(INVALID_CREDENTIALS_MESSAGE);
     }
 
     public String getUsernameRequiredMessage() {
-        return getText(
-                USERNAME_REQUIRED_MESSAGE
-        );
+        return getText(USERNAME_REQUIRED_MESSAGE);
     }
 
     public String getPasswordRequiredMessage() {
-        return getText(
-                PASSWORD_REQUIRED_MESSAGE
-        );
+        return getText(PASSWORD_REQUIRED_MESSAGE);
     }
 
     public boolean isAtLoginPage() {
         return currentUrlContains("/login");
+    }
+
+    public boolean isPasswordMasked() {
+        WebElement passwordInput =
+                waitUntilVisible(PASSWORD_INPUT);
+
+        String inputType =
+                passwordInput.getDomProperty("type");
+
+        return "password".equalsIgnoreCase(inputType);
+    }
+
+    public boolean hasEnteredPassword(String expectedPassword) {
+        WebElement passwordInput =
+                waitUntilVisible(PASSWORD_INPUT);
+
+        String actualValue =
+                passwordInput.getDomProperty("value");
+
+        return expectedPassword != null
+                && !expectedPassword.isEmpty()
+                && expectedPassword.equals(actualValue);
+    }
+
+    public boolean isLoginFormDisplayed() {
+        return waitUntilVisible(USERNAME_INPUT).isDisplayed()
+                && waitUntilVisible(PASSWORD_INPUT).isDisplayed()
+                && waitUntilVisible(LOGIN_BUTTON).isDisplayed();
     }
 }

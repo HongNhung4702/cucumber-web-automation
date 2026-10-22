@@ -45,6 +45,10 @@
             2.35.3
         </allure.version>
 
+        <commons.csv.version>
+            1.14.1
+        </commons.csv.version>
+
         <!-- Maven plugins -->
         <maven.compiler.plugin.version>
             3.16.0
@@ -167,6 +171,15 @@
             <scope>test</scope>
         </dependency>
 
+
+        <!-- CSV Test Data -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>${commons.csv.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
@@ -223,33 +236,18 @@
 
                 <configuration>
 
-                    <!--
-                        Dùng Allure Report 2 ổn định,
-                        phù hợp với Allure Java adapter hiện tại.
-                    -->
                     <reportVersion>
                         ${allure.report.version}
                     </reportVersion>
 
-                    <!--
-                        target/allure-results
-                    -->
                     <resultsDirectory>
                         allure-results
                     </resultsDirectory>
 
-                    <!--
-                        HTML report cuối cùng:
-                        target/allure-report
-                    -->
                     <reportDirectory>
                         ${project.build.directory}/allure-report
                     </reportDirectory>
 
-                    <!--
-                        Tạo một HTML tự chứa để dễ mở,
-                        lưu và trình bày đồ án.
-                    -->
                     <singleFile>true</singleFile>
 
                 </configuration>

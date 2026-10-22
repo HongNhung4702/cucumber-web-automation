@@ -1,6 +1,7 @@
 package com.hongnhung.cucumberweb.hooks;
 
 import com.hongnhung.cucumberweb.config.ConfigManager;
+import com.hongnhung.cucumberweb.context.ScenarioContext;
 import com.hongnhung.cucumberweb.driver.DriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -11,6 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.UUID;
 
 public final class ScenarioHooks {
@@ -18,14 +20,25 @@ public final class ScenarioHooks {
     private static final Path SCREENSHOT_DIRECTORY =
             Path.of("target", "screenshots");
 
-    private final DriverManager driverManager;
+    private static final String TEST_CASE_TAG_PREFIX =
+            "@TC_";
 
-    public ScenarioHooks(DriverManager driverManager) {
+    private final DriverManager driverManager;
+    private final ScenarioContext scenarioContext;
+
+    public ScenarioHooks(
+            DriverManager driverManager,
+            ScenarioContext scenarioContext
+    ) {
         this.driverManager = driverManager;
+        this.scenarioContext = scenarioContext;
     }
 
     @Before
-    public void setUp() {
+    public void setUp(Scenario scenario) {
+
+        initializeTestCaseId(scenario);
+
         driverManager.startDriver();
     }
 
@@ -42,6 +55,43 @@ public final class ScenarioHooks {
 
             driverManager.quitDriver();
         }
+    }
+
+    private void initializeTestCaseId(
+            Scenario scenario
+    ) {
+
+        List<String> testCaseTags =
+                scenario
+                        .getSourceTagNames()
+                        .stream()
+                        .filter(tag ->
+                                tag.startsWith(
+                                        TEST_CASE_TAG_PREFIX
+                                )
+                        )
+                        .toList();
+
+        if (testCaseTags.size() > 1) {
+
+            throw new IllegalStateException(
+                    "Scenario must not contain more than one Test Case ID tag: "
+                            + testCaseTags
+            );
+        }
+
+        if (testCaseTags.isEmpty()) {
+            return;
+        }
+
+        String testCaseId =
+                testCaseTags
+                        .get(0)
+                        .substring(1);
+
+        scenarioContext.setTestCaseId(
+                testCaseId
+        );
     }
 
     private boolean shouldCaptureScreenshot(
@@ -147,6 +197,7 @@ public final class ScenarioHooks {
                 );
 
         if (sanitized.length() > 80) {
+
             sanitized =
                     sanitized.substring(
                             0,

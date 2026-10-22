@@ -1,3 +1,4 @@
+
 param (
     [string]$Tags,
     [switch]$Report
@@ -5,75 +6,64 @@ param (
 
 $ErrorActionPreference = "Stop"
 
-$SecretsFile = Join-Path `
-    $HOME `
-    ".cucumber-web-automation\secrets.ps1"
+$ProjectRoot = $PSScriptRoot
 
 $AllureResultsDirectory = Join-Path `
-    $PSScriptRoot `
-    "target\allure-results"
-
-$AllureReportDirectory = Join-Path `
-    $PSScriptRoot `
-    "target\allure-report"
+    $ProjectRoot "target\allure-results"
 
 $AllureReportFile = Join-Path `
-    $AllureReportDirectory `
-    "index.html"
+    $ProjectRoot "target\allure-report\index.html"
 
 $OriginalMavenOpts = $env:MAVEN_OPTS
 
-
 function Enable-Utf8Console {
-
-    $Utf8 = New-Object `
-        System.Text.UTF8Encoding($false)
+    $Utf8 = New-Object System.Text.UTF8Encoding($false)
 
     [Console]::InputEncoding = $Utf8
     [Console]::OutputEncoding = $Utf8
-
     $global:OutputEncoding = $Utf8
 
     if ($env:OS -eq "Windows_NT") {
         chcp 65001 | Out-Null
     }
 
-    if ([string]::IsNullOrWhiteSpace(
-            $env:MAVEN_OPTS
-    )) {
-
-        $env:MAVEN_OPTS =
-        "-Dfile.encoding=UTF-8"
-
-    } elseif (
-    $env:MAVEN_OPTS -notmatch
-            "-Dfile.encoding="
-    ) {
-
-        $env:MAVEN_OPTS =
-        $env:MAVEN_OPTS +
-                " -Dfile.encoding=UTF-8"
+    if ([string]::IsNullOrWhiteSpace($env:MAVEN_OPTS)) {
+        $env:MAVEN_OPTS = "-Dfile.encoding=UTF-8"
+    }
+    elseif ($env:MAVEN_OPTS -notmatch "-Dfile.encoding=") {
+        $env:MAVEN_OPTS += " -Dfile.encoding=UTF-8"
     }
 }
 
+function Load-TestCredentials {
+    if ([string]::IsNullOrWhiteSpace($env:TEST_USERNAME)) {
+        $env:TEST_USERNAME = Read-Host "Nhap ten dang nhap kiem thu"
+    }
 
-function Restore-MavenOptions {
+    if ([string]::IsNullOrWhiteSpace($env:TEST_PASSWORD)) {
+        $SecurePassword = Read-Host `
+            "Nhap mat khau kiem thu" -AsSecureString
 
-    if ($null -eq $OriginalMavenOpts) {
+        try {
+            $env:TEST_PASSWORD = (
+            [System.Net.NetworkCredential]::new(
+                    "",
+                    $SecurePassword
+            )
+            ).Password
+        }
+        finally {
+            $SecurePassword.Dispose()
+        }
+    }
 
-        Remove-Item Env:MAVEN_OPTS `
-            -ErrorAction SilentlyContinue
-
-    } else {
-
-        $env:MAVEN_OPTS =
-        $OriginalMavenOpts
+    if ([string]::IsNullOrWhiteSpace($env:TEST_USERNAME) -or
+            [string]::IsNullOrWhiteSpace($env:TEST_PASSWORD)) {
+        throw "Test credentials are required."
     }
 }
-
 
 function Clear-TestCredentials {
-
     Remove-Item Env:TEST_USERNAME `
         -ErrorAction SilentlyContinue
 
@@ -81,110 +71,43 @@ function Clear-TestCredentials {
         -ErrorAction SilentlyContinue
 }
 
-
-function Validate-SecretsFile {
-
-    if (-not (Test-Path $SecretsFile)) {
-
-        throw @"
-Local credentials file was not found:
-
-$SecretsFile
-"@
+function Restore-MavenOptions {
+    if ($null -eq $OriginalMavenOpts) {
+        Remove-Item Env:MAVEN_OPTS `
+            -ErrorAction SilentlyContinue
+    }
+    else {
+        $env:MAVEN_OPTS = $OriginalMavenOpts
     }
 }
-
-
-function Load-TestCredentials {
-
-    . $SecretsFile
-
-    if ([string]::IsNullOrWhiteSpace(
-            $env:TEST_USERNAME
-    )) {
-
-        throw "TEST_USERNAME is not configured."
-    }
-
-    if ([string]::IsNullOrWhiteSpace(
-            $env:TEST_PASSWORD
-    )) {
-
-        throw "TEST_PASSWORD is not configured."
-    }
-}
-
-
-function Build-MavenTestArguments {
-
-    $Arguments = @(
-        "clean",
-        "test"
-    )
-
-    if (-not [string]::IsNullOrWhiteSpace(
-            $Tags
-    )) {
-
-        $Arguments +=
-        "-Dcucumber.filter.tags=$Tags"
-    }
-
-    return $Arguments
-}
-
 
 function Show-TestHeader {
-
     Write-Host ""
     Write-Host "========================================"
     Write-Host " Cucumber Web Automation"
     Write-Host "========================================"
 
-    if ([string]::IsNullOrWhiteSpace(
-            $Tags
-    )) {
-
+    if ([string]::IsNullOrWhiteSpace($Tags)) {
         Write-Host "Test scope : ALL"
-
-    } else {
-
+    }
+    else {
         Write-Host "Test tags  : $Tags"
     }
 
-    Write-Host "Secrets    : local environment"
-
-    if ($Report) {
-
-        Write-Host "Allure     : generate and open"
-
-    } else {
-
-        Write-Host "Allure     : results only"
-    }
-
+    Write-Host "Credentials: environment / interactive"
     Write-Host "Encoding   : UTF-8"
+    Write-Host "Allure     : $(if ($Report) { 'enabled' } else { 'disabled' })"
     Write-Host "========================================"
     Write-Host ""
 }
 
-
 function Generate-AllureReport {
-
     if (-not (Test-Path $AllureResultsDirectory)) {
-
-        throw @"
-Allure results were not found:
-
-$AllureResultsDirectory
-"@
+        throw "Allure results directory was not found."
     }
 
     Write-Host ""
-    Write-Host "========================================"
-    Write-Host " Generating Allure Report"
-    Write-Host "========================================"
-    Write-Host ""
+    Write-Host "Generating Allure Report..."
 
     & mvn allure:report
 
@@ -193,72 +116,45 @@ $AllureResultsDirectory
     }
 
     if (-not (Test-Path $AllureReportFile)) {
-
-        throw @"
-Allure report file was not found:
-
-$AllureReportFile
-"@
+        throw "Allure report index.html was not found."
     }
-
-    Write-Host ""
-    Write-Host "Allure Report:"
-    Write-Host $AllureReportFile
-    Write-Host ""
 
     Start-Process $AllureReportFile
 }
 
-
 $TestExitCode = 1
 
-
 try {
-
-    # =========================
-    # UTF-8
-    # =========================
-
     Enable-Utf8Console
-
-    # =========================
-    # Credentials
-    # =========================
-
-    Validate-SecretsFile
     Load-TestCredentials
-
-    # =========================
-    # Test execution
-    # =========================
-
     Show-TestHeader
 
-    $MavenArguments =
-    Build-MavenTestArguments
+    Push-Location $ProjectRoot
 
-    & mvn @MavenArguments
+    try {
+        $MavenArguments = @("clean", "test")
 
-    $TestExitCode =
-    $LASTEXITCODE
+        if (-not [string]::IsNullOrWhiteSpace($Tags)) {
+            $MavenArguments += "-Dcucumber.filter.tags=$Tags"
+        }
 
-    # Credentials are no longer required
-    # after test execution.
-    Clear-TestCredentials
+        & mvn @MavenArguments
 
-    # =========================
-    # Allure Report
-    # =========================
+        $TestExitCode = $LASTEXITCODE
 
-    if ($Report) {
-        Generate-AllureReport
+        Clear-TestCredentials
+
+        if ($Report) {
+            Generate-AllureReport
+        }
     }
-
-} finally {
-
+    finally {
+        Pop-Location
+    }
+}
+finally {
     Clear-TestCredentials
     Restore-MavenOptions
 }
-
 
 exit $TestExitCode

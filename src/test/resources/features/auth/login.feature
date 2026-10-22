@@ -1,50 +1,55 @@
+
 @student @auth @login
-Feature: Đăng nhập vào Cổng thông tin đào tạo
+Feature: Kiểm thử chức năng đăng nhập và bảo vệ phiên làm việc
 
   Là một sinh viên
-  Tôi muốn đăng nhập vào Cổng thông tin đào tạo
-  Để có thể truy cập các chức năng dành cho sinh viên
+  Tôi muốn đăng nhập và sử dụng hệ thống an toàn
+  Để truy cập thông tin cá nhân và bảo vệ dữ liệu
 
-  @smoke @TC_LOGIN_001
-  Scenario: Đăng nhập thành công với thông tin hợp lệ
+  @smoke @TC_01
+  Scenario: Đăng nhập thành công với tài khoản hợp lệ
     Given người dùng đang ở trang đăng nhập
-    When người dùng đăng nhập với thông tin hợp lệ
+    When người dùng thực hiện đăng nhập
     Then người dùng được chuyển đến trang thông tin sinh viên
 
-  @negative @TC_LOGIN_002
-  Scenario: Đăng nhập thất bại với tên đăng nhập không hợp lệ
+  @negative
+  Scenario Outline: Đăng nhập với thông tin không hợp lệ - <truong_hop>
     Given người dùng đang ở trang đăng nhập
-    When người dùng nhập tên đăng nhập không hợp lệ
-    And người dùng nhập mật khẩu
-    And người dùng nhấn nút đăng nhập
-    Then hệ thống hiển thị thông báo "Tên đăng nhập hoặc mật khẩu không chính xác"
+    When người dùng thực hiện đăng nhập
+    Then hệ thống hiển thị thông báo đăng nhập không hợp lệ
     And người dùng vẫn ở trang đăng nhập
 
-  @negative @TC_LOGIN_003
-  Scenario: Đăng nhập thất bại với mật khẩu không hợp lệ
-    Given người dùng đang ở trang đăng nhập
-    When người dùng nhập tên đăng nhập hợp lệ
-    And người dùng nhập mật khẩu không hợp lệ
-    And người dùng nhấn nút đăng nhập
-    Then hệ thống hiển thị thông báo "Tên đăng nhập hoặc mật khẩu không chính xác"
-    And người dùng vẫn ở trang đăng nhập
+    @TC_02
+    Examples: Mật khẩu không hợp lệ
+      | truong_hop           |
+      | Mật khẩu không hợp lệ |
 
-  @negative @TC_LOGIN_004
-  Scenario: Không nhập tên đăng nhập
-    Given người dùng đang ở trang đăng nhập
-    When người dùng chỉ nhập mật khẩu
-    And người dùng nhấn nút đăng nhập
-    Then hệ thống hiển thị lỗi "Tên đăng nhập là bắt buộc"
+    @TC_03
+    Examples: Tên đăng nhập không hợp lệ
+      | truong_hop                |
+      | Tên đăng nhập không hợp lệ |
 
-  @negative @TC_LOGIN_005
-  Scenario: Không nhập mật khẩu
+  @security @TC_04
+  Scenario: Kiểm tra mật khẩu được che khi nhập
     Given người dùng đang ở trang đăng nhập
-    When người dùng chỉ nhập tên đăng nhập
-    And người dùng nhấn nút đăng nhập
-    Then hệ thống hiển thị lỗi "Mật khẩu là bắt buộc"
+    When người dùng nhập mật khẩu vào ô mật khẩu
+    Then nội dung mật khẩu phải được che
 
-  @negative @TC_LOGIN_006
-  Scenario: Không nhập tên đăng nhập và mật khẩu
-    Given người dùng đang ở trang đăng nhập
-    When người dùng nhấn nút đăng nhập
-    Then hệ thống hiển thị lỗi "Tên đăng nhập là bắt buộc"
+  @security @TC_05
+  Scenario: Kiểm tra truy cập URL riêng tư sau đăng xuất
+    Given sinh viên đã đăng nhập thành công
+    When sinh viên truy cập trang Xem điểm và lưu URL
+    And sinh viên đăng xuất khỏi hệ thống
+    And sinh viên truy cập lại URL đã lưu
+    Then hệ thống không cho phép xem dữ liệu điểm
+    And hệ thống yêu cầu đăng nhập lại
+
+  @security @TC_06
+  Scenario: Kiểm tra vô hiệu hóa phiên giữa hai tab
+    Given sinh viên đã đăng nhập thành công
+    When sinh viên mở trang Tiến độ học tập ở tab thứ nhất
+    And sinh viên mở trang Xem điểm ở tab thứ hai
+    And sinh viên đăng xuất tại tab thứ nhất
+    And sinh viên chuyển sang tab thứ hai và tải lại trang
+    Then tab thứ hai không còn hiển thị dữ liệu điểm
+    And hệ thống yêu cầu đăng nhập lại
