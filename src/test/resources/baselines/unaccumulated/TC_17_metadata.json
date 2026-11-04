@@ -1,0 +1,44 @@
+
+{
+  "testCaseId": "TC_17",
+  "status": "BASELINE_CONFIRMED",
+  "baselineVersion": "1.1",
+  "website": "https://daotao.qnu.edu.vn/student/overview",
+  "function": "Học phần chưa tích lũy",
+  "sourceType": "Thu thập thủ công từ giao diện website, có dữ liệu DOM và ảnh minh chứng.",
+  "oracleScope": "Đối chiếu danh sách học phần chưa tích lũy theo tài khoản và chương trình đào tạo với baseline đã xác nhận; không đánh giá tính chính xác nghiệp vụ của kết quả xét tích lũy.",
+  "filters": {
+    "chuongTrinh": "Kỹ thuật phần mềm",
+    "maChuongTrinh": "119DHCQK45"
+  },
+  "captureContext": {
+    "namHoc": "2025-2026",
+    "hocKy": "Học kỳ 3",
+    "maHocKy": "HK03"
+  },
+  "dialogTitle": "HỌC PHẦN CHƯA TÍCH LŨY",
+  "expectedCourseCount": 7,
+  "expectedCreditTotal": 23,
+  "expectedDataRowCount": 7,
+  "excludedGroupRows": 2,
+  "dataCaptureDate": "2026-11-03",
+  "baselineCsvFilename": "TC_17_expected.csv",
+  "expectedColumns": [
+    "maHocPhan",
+    "tenHocPhan",
+    "soTC",
+    "soTietLT",
+    "soTietTH",
+    "soTietTL",
+    "hocPhanTuongDuong",
+    "hocPhanHocTruoc",
+    "hocPhanThayThe"
+  ],
+  "comparisonPolicy": {
+    "fields": "Đối chiếu đầy đủ 9 trường của mỗi học phần.",
+    "order": "So sánh đa tập hợp (multiset), không phụ thuộc thứ tự hiển thị.",
+    "normalization": "Chuẩn hóa khoảng trắng, Unicode NFC và số nguyên.",
+    "context": "Xác thực tài khoản và chương trình đào tạo. Năm học, học kỳ là ngữ cảnh ghi nhận baseline, không phải điều kiện lọc chính của TC_17.",
+    "excludedElements": "Không tính hàng phân nhóm Bắt buộc, cột TT và liên kết Xem CTĐT có học vào dữ liệu học phần."
+  }
+}

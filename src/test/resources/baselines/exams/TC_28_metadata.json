@@ -1,0 +1,58 @@
+
+{
+  "testCaseId": "TC_28",
+  "status": "CONFIRMED_FOR_BASELINE_COMPARISON",
+  "baselineVersion": "1.0",
+  "website": "https://daotao.qnu.edu.vn/student/exam",
+  "sourceType": "Thu thập thủ công từ giao diện website, có ảnh minh chứng.",
+  "oracleScope": "Kiểm tra tính nhất quán giữa dữ liệu lịch thi hiển thị và baseline đã ghi nhận; không đánh giá độ chính xác nghiệp vụ của dữ liệu do nhà trường quản lý.",
+  "accountAlias": "Tài khoản sinh viên cá nhân; không lưu thông tin đăng nhập trong baseline.",
+  "filters": {
+    "tab": "Năm học - Học kỳ",
+    "namHoc": "2022-2023",
+    "hocKy": "Học kỳ 1",
+    "bang": "Tất cả"
+  },
+  "expectedRowCount": 5,
+  "observedRowCountConfirmed": true,
+  "paginationOrAdditionalRows": "Đã kiểm tra và xác nhận bảng Tất cả có đúng 5 dòng, không có bản ghi bổ sung khi cuộn.",
+  "dataCaptureDate": "2026-10-28",
+  "dataCaptureTimePrecision": "Chỉ ghi nhận ngày, không có giờ/phút cụ thể.",
+  "metadataPreparedDate": "2026-11-02",
+  "confirmationDate": "2026-11-02",
+  "evidenceSubmittedDate": "2026-11-02",
+  "sourceEvidenceFilename": "image(20261102-080450).png",
+  "baselineCsvFilename": "TC_28_expected.csv",
+  "expectedColumns": [
+    "maLopHocPhan",
+    "tenLopHocPhan",
+    "lanThi",
+    "ngayThi",
+    "gioThi",
+    "phongThi",
+    "diaDiem",
+    "hinhThucThi",
+    "kyThi",
+    "ghiChu",
+    "vangThi"
+  ],
+  "uiColumnToBaseline": {
+    "Mã lớp học phần/Tên lớp học phần": [
+      "maLopHocPhan",
+      "tenLopHocPhan"
+    ]
+  },
+  "extractionRule": "Tách mã và tên lớp học phần tại dấu gạch nối đầu tiên sau dãy số mã lớp; giữ nguyên dấu gạch nối trong tên học phần.",
+  "comparisonPolicy": {
+    "fields": "Đối chiếu đầy đủ 11 trường của mỗi bản ghi, bao gồm các giá trị rỗng tại cột ghi chú và vắng thi.",
+    "order": "So sánh đa tập hợp (multiset), không phụ thuộc thứ tự hiển thị; bảo toàn số lần xuất hiện của bản ghi trùng.",
+    "normalization": "Chuẩn hóa khoảng trắng và Unicode NFC; không tự ý thay đổi giá trị nghiệp vụ.",
+    "failureMeaning": "Kết quả FAIL thể hiện sai lệch hoặc lỗi thực thi cần phân tích; không mặc định xác định lỗi nghiệp vụ của website."
+  },
+  "reviewNotes": [
+    "Đã xác nhận 5 bản ghi khớp với dữ liệu thực tế tại thời điểm thu thập.",
+    "Đã tách mã và tên lớp học phần để đối chiếu chi tiết.",
+    "Hai Scenario Cucumber thực thi thành công, dữ liệu khớp baseline.",
+    "Cả 8 tình huống JUnit E01–E08 đều đạt kỳ vọng."
+  ]
+}

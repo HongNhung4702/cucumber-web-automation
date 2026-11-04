@@ -1,0 +1,49 @@
+
+{
+  "testCaseId": "TC_21",
+  "status": "BASELINE_CONFIRMED",
+  "baselineVersion": "1.0",
+  "website": "https://daotao.qnu.edu.vn/student/schedules",
+  "sourceType": "Thu thập thủ công từ giao diện website, có ảnh minh chứng.",
+  "oracleScope": "Đối chiếu dữ liệu thời khóa biểu hiển thị với baseline; không đánh giá độ chính xác nghiệp vụ của dữ liệu do nhà trường quản lý.",
+  "accountAlias": "Tài khoản sinh viên cá nhân.",
+  "filters": {
+    "tab": "Thời khóa biểu theo lớp học phần",
+    "namHoc": "2025-2026",
+    "hocKy": "Học kỳ 3",
+    "hocKyHienThi": "HK03"
+  },
+  "expectedCourseCount": 2,
+  "expectedRowCount": 5,
+  "observedRowCountConfirmed": true,
+  "dataCaptureDate": "2026-10-28",
+  "dataCaptureTimePrecision": "Chỉ ghi nhận ngày.",
+  "baselineCsvFilename": "TC_21_expected.csv",
+  "expectedColumns": [
+    "sttHocPhan",
+    "maLopHocPhan",
+    "tenHocPhan",
+    "tenGiaoVien",
+    "soTC",
+    "thu",
+    "tietHoc",
+    "phongHoc",
+    "tuan",
+    "tuNgayDenNgay",
+    "phongDiaDiem",
+    "diaChi"
+  ],
+  "recordDefinition": "Mỗi bản ghi tương ứng với một dòng lịch học cụ thể.",
+  "extractionRule": "Tách mã và tên học phần; kế thừa thông tin chung của học phần tại các ô gộp rowspan.",
+  "comparisonPolicy": {
+    "fields": "Đối chiếu đầy đủ 12 trường của mỗi bản ghi.",
+    "order": "So sánh đa tập hợp (multiset), không phụ thuộc thứ tự hiển thị.",
+    "normalization": "Chuẩn hóa khoảng trắng và Unicode NFC; giữ nguyên giá trị nghiệp vụ.",
+    "failureMeaning": "Sai lệch cần được phân tích trước khi xác định nguyên nhân."
+  },
+  "reviewNotes": [
+    "Đã xác nhận 2 học phần và 5 dòng lịch học.",
+    "Baseline phản ánh dữ liệu hiển thị theo điều kiện tra cứu đã chọn.",
+    "Không lưu thông tin xác thực trong dữ liệu tham chiếu."
+  ]
+}

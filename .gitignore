@@ -52,3 +52,11 @@ Thumbs.db
 # =========================
 secrets.ps1
 .env
+
+# Backup files
+backup-java/
+*.java.bak
+
+# Obsolete setup scripts
+setup-allure-grouping.ps1
+fix-allure-suites.ps1

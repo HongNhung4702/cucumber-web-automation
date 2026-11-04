@@ -1,11 +1,14 @@
+
 package com.hongnhung.cucumberweb.hooks;
 
 import com.hongnhung.cucumberweb.config.ConfigManager;
 import com.hongnhung.cucumberweb.context.ScenarioContext;
 import com.hongnhung.cucumberweb.driver.DriverManager;
+
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -34,6 +37,10 @@ public final class ScenarioHooks {
         this.scenarioContext = scenarioContext;
     }
 
+    // =========================================
+    // 1. KHỞI TẠO TRƯỚC MỖI SCENARIO
+    // =========================================
+
     @Before
     public void setUp(Scenario scenario) {
 
@@ -41,6 +48,10 @@ public final class ScenarioHooks {
 
         driverManager.startDriver();
     }
+
+    // =========================================
+    // 2. XỬ LÝ SAU MỖI SCENARIO
+    // =========================================
 
     @After
     public void tearDown(Scenario scenario) {
@@ -56,6 +67,10 @@ public final class ScenarioHooks {
             driverManager.quitDriver();
         }
     }
+
+    // =========================================
+    // 3. XÁC ĐỊNH MÃ TEST CASE
+    // =========================================
 
     private void initializeTestCaseId(
             Scenario scenario
@@ -94,6 +109,10 @@ public final class ScenarioHooks {
         );
     }
 
+    // =========================================
+    // 4. XÁC ĐỊNH CÓ CẦN CHỤP ẢNH KHÔNG
+    // =========================================
+
     private boolean shouldCaptureScreenshot(
             Scenario scenario
     ) {
@@ -104,6 +123,10 @@ public final class ScenarioHooks {
                 "screenshot.on.failure"
         );
     }
+
+    // =========================================
+    // 5. CHỤP ẢNH KHI SCENARIO THẤT BẠI
+    // =========================================
 
     private void captureFailureScreenshot(
             Scenario scenario
@@ -137,6 +160,10 @@ public final class ScenarioHooks {
         }
     }
 
+    // =========================================
+    // 6. ĐÍNH KÈM SCREENSHOT VÀO CUCUMBER
+    // =========================================
+
     private void attachToScenario(
             Scenario scenario,
             byte[] screenshot
@@ -148,6 +175,10 @@ public final class ScenarioHooks {
                 "Failure Screenshot"
         );
     }
+
+    // =========================================
+    // 7. LƯU SCREENSHOT VÀO THƯ MỤC
+    // =========================================
 
     private void saveScreenshotToFile(
             Scenario scenario,
@@ -185,6 +216,10 @@ public final class ScenarioHooks {
                         .toAbsolutePath()
         );
     }
+
+    // =========================================
+    // 8. CHUẨN HÓA TÊN FILE SCREENSHOT
+    // =========================================
 
     private String sanitizeFileName(
             String value

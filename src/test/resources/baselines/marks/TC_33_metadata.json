@@ -1,0 +1,69 @@
+
+{
+  "testCaseId": "TC_33",
+  "status": "PENDING_FINAL_CSV_REVIEW",
+  "baselineVersion": "1.0-candidate",
+  "website": "https://daotao.qnu.edu.vn/student/marks",
+  "sourceType": "Thu thập thủ công từ giao diện website, có ảnh minh chứng.",
+  "oracleScope": "Kiểm tra tính nhất quán giữa dữ liệu bảng điểm hiển thị và baseline đã ghi nhận; không đánh giá độ chính xác nghiệp vụ của điểm số do nhà trường quản lý.",
+  "accountAlias": "Tài khoản sinh viên cá nhân; không lưu thông tin đăng nhập trong baseline.",
+  "filters": {
+    "chuongTrinhDaoTao": "Kỹ thuật phần mềm",
+    "namHoc": "2025-2026",
+    "hocKy": "Học kỳ 2",
+    "cheDoXem": "Xem điểm sinh viên"
+  },
+  "expectedRowCount": 5,
+  "observedRowCountConfirmed": true,
+  "paginationOrAdditionalRows": "Đã kiểm tra và xác nhận bảng điểm có đúng 5 học phần, không có bản ghi bổ sung khi cuộn.",
+  "dataCaptureDate": "2026-10-28",
+  "dataCaptureTimePrecision": "Chỉ ghi nhận ngày, không có giờ/phút cụ thể.",
+  "metadataPreparedDate": "2026-11-03",
+  "confirmationDate": null,
+  "evidenceSubmittedDate": "2026-11-03",
+  "sourceEvidenceFilename": "image(20261103-085929).png",
+  "courseBaselineCsvFilename": "TC_33_expected.csv",
+  "summaryBaselineCsvFilename": "TC_33_summary_expected.csv",
+  "courseColumns": [
+    "maHocPhan",
+    "tenHocPhan",
+    "tinChi",
+    "diem10",
+    "diem4",
+    "diemChu",
+    "ketQuaHienThi"
+  ],
+  "summaryColumns": [
+    "chiTieu",
+    "giaTri",
+    "phamVi"
+  ],
+  "summaryCoreMetrics": [
+    "tongSoTinChi",
+    "soTinChiDat",
+    "soTinChiKhongDat",
+    "diemTrungBinhHocKyHe10",
+    "diemTrungBinhHocKyHe4"
+  ],
+  "summaryReferenceOnlyMetrics": [
+    "diemRenLuyen",
+    "xepLoaiRenLuyen",
+    "soTinChiTichLuy",
+    "diemTrungBinhTichLuyHe10",
+    "diemTrungBinhTichLuyHe4"
+  ],
+  "resultDisplayRule": "Ghi nhận biểu tượng dấu tích màu xanh tại cột Kết quả bằng giá trị dau_tich_xanh",
+  "comparisonPolicy": {
+    "fields": "Dự kiến đối chiếu 7 trường của mỗi học phần và 5 chỉ tiêu tổng hợp học kỳ; các chỉ tiêu rèn luyện và tích lũy được lưu để tham khảo.",
+    "order": "Dự kiến so sánh không phụ thuộc thứ tự hiển thị khi chưa có yêu cầu nghiệp vụ về thứ tự; bảo toàn số lần xuất hiện của bản ghi trùng.",
+    "normalization": "Dự kiến chuẩn hóa Unicode NFC và các định dạng hiển thị tương đương đã xác minh; không tự làm tròn hoặc thay đổi điểm số.",
+    "failureMeaning": "Kết quả FAIL cần được phân tích theo dữ liệu tham chiếu, dữ liệu hiển thị và mã kiểm thử trước khi xác định nguyên nhân."
+  },
+  "reviewNotes": [
+    "Đã xác nhận 5 học phần và các chỉ tiêu tổng hợp khớp baseline.",
+    "Dữ liệu học phần và tổng hợp được lưu trong hai tệp CSV riêng biệt.",
+    "Ba Scenario Cucumber thực thi thành công.",
+    "Cả 7 tình huống JUnit M01–M07 đều đạt kỳ vọng.",
+    "Cột Kết quả được đối chiếu theo biểu tượng hiển thị, không suy diễn ý nghĩa nghiệp vụ."
+  ]
+}

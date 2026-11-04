@@ -1,7 +1,8 @@
 
 param (
     [string]$Tags,
-    [switch]$Report
+    [switch]$Report,
+    [switch]$NoReport
 )
 
 $ErrorActionPreference = "Stop"
@@ -37,7 +38,8 @@ function Enable-Utf8Console {
 
 function Load-TestCredentials {
     if ([string]::IsNullOrWhiteSpace($env:TEST_USERNAME)) {
-        $env:TEST_USERNAME = Read-Host "Nhap ten dang nhap kiem thu"
+        $env:TEST_USERNAME = Read-Host `
+            "Nhap ten dang nhap kiem thu"
     }
 
     if ([string]::IsNullOrWhiteSpace($env:TEST_PASSWORD)) {
@@ -96,18 +98,42 @@ function Show-TestHeader {
 
     Write-Host "Credentials: environment / interactive"
     Write-Host "Encoding   : UTF-8"
-    Write-Host "Allure     : $(if ($Report) { 'enabled' } else { 'disabled' })"
+
+    if ($NoReport) {
+        Write-Host "Allure     : disabled"
+    }
+    else {
+        Write-Host "Allure     : automatic"
+    }
+
     Write-Host "========================================"
     Write-Host ""
 }
 
 function Generate-AllureReport {
+
     if (-not (Test-Path $AllureResultsDirectory)) {
-        throw "Allure results directory was not found."
+        Write-Warning "Allure results directory was not found."
+        return
+    }
+
+    $ResultFiles = @(
+        Get-ChildItem `
+            -Path $AllureResultsDirectory `
+            -Filter "*-result.json" `
+            -File
+    )
+
+    if ($ResultFiles.Count -eq 0) {
+        Write-Warning "No Allure test results found."
+        return
     }
 
     Write-Host ""
-    Write-Host "Generating Allure Report..."
+    Write-Host "========================================"
+    Write-Host " Generating Allure Report"
+    Write-Host "========================================"
+    Write-Host "Result files: $($ResultFiles.Count)"
 
     & mvn allure:report
 
@@ -118,6 +144,11 @@ function Generate-AllureReport {
     if (-not (Test-Path $AllureReportFile)) {
         throw "Allure report index.html was not found."
     }
+
+    Write-Host ""
+    Write-Host "Allure Report generated successfully:"
+    Write-Host $AllureReportFile
+    Write-Host ""
 
     Start-Process $AllureReportFile
 }
@@ -144,7 +175,9 @@ try {
 
         Clear-TestCredentials
 
-        if ($Report) {
+        # Tự động tạo báo cáo sau khi chạy test.
+        # Vẫn xuất báo cáo nếu có test thất bại.
+        if (-not $NoReport) {
             Generate-AllureReport
         }
     }

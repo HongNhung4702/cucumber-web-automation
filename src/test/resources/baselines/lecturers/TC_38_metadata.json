@@ -1,0 +1,41 @@
+
+{
+  "testCaseId": "TC_38",
+  "status": "BASELINE_CONFIRMED",
+  "baselineVersion": "1.0",
+  "website": "https://daotao.qnu.edu.vn/ThoiKhoaBieuGiangVien",
+  "sourceType": "Thu thập thủ công từ giao diện website, có dữ liệu DOM và ảnh minh chứng.",
+  "oracleScope": "Đối chiếu thông tin thời khóa biểu giảng viên hiển thị với baseline đã xác nhận; không đánh giá độ chính xác nghiệp vụ của dữ liệu do nhà trường quản lý.",
+  "filters": {
+    "namHoc": "2026-2027",
+    "hocKy": "Học kỳ 1",
+    "hocKyHienThi": "HK01",
+    "khoa": "Khoa Công nghệ thông tin",
+    "giangVien": "Phạm Trần Thiện"
+  },
+  "expectedCourseCount": 11,
+  "expectedRowCount": 34,
+  "dataCaptureDate": "2026-10-28",
+  "baselineCsvFilename": "TC_38_expected.csv",
+  "expectedColumns": [
+    "maLHP",
+    "tenHocPhan",
+    "soTietLT",
+    "soTietTH",
+    "soTietTL",
+    "soTC",
+    "maLop",
+    "tenCBGV",
+    "siSo",
+    "thu",
+    "tiet",
+    "phong",
+    "tuanHoc"
+  ],
+  "recordDefinition": "Mỗi bản ghi tương ứng với một dòng lịch giảng dạy của lớp học phần.",
+  "comparisonPolicy": {
+    "fields": "Đối chiếu đầy đủ 13 trường của mỗi bản ghi.",
+    "order": "So sánh đa tập hợp (multiset), không phụ thuộc thứ tự hiển thị.",
+    "normalization": "Chuẩn hóa khoảng trắng và Unicode NFC; giữ nguyên giá trị nghiệp vụ và chuỗi tuần học."
+  }
+}
