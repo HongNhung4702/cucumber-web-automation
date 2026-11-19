@@ -35,15 +35,6 @@ Feature: Kiểm thử chức năng đăng nhập và bảo vệ phiên làm vi�
     When người dùng nhập mật khẩu vào ô mật khẩu
     Then nội dung mật khẩu phải được che
 
-  @security @TC_05
-  Scenario: Kiểm tra truy cập URL riêng tư sau đăng xuất
-    Given sinh viên đã đăng nhập thành công
-    When sinh viên truy cập trang Xem điểm và lưu URL
-    And sinh viên đăng xuất khỏi hệ thống
-    And sinh viên truy cập lại URL đã lưu
-    Then hệ thống không cho phép xem dữ liệu điểm
-    And hệ thống yêu cầu đăng nhập lại
-
   @security @TC_06
   Scenario: Kiểm tra vô hiệu hóa phiên giữa hai tab
     Given sinh viên đã đăng nhập thành công

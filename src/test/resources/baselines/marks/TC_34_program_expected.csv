@@ -1,0 +1,84 @@
+
+ky,loai,nhom,tt,ma,ten,tc,d10,d4,chu,ketQua
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Bắt buộc (17.0 tín chỉ),,1,1010038,Đại số tuyến tính,3,7.70,3.00,B+,DAT
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Bắt buộc (17.0 tín chỉ),,2,1010245,Giải tích,3,5.20,2.00,C,DAT
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Bắt buộc (17.0 tín chỉ),,3,1050074,Toán logic,2,7.50,3.00,B+,DAT
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Bắt buộc (17.0 tín chỉ),,4,1050124,"Thực hành máy tính (lắp ráp, cài đặt, bảo trì)",1,8.50,3.50,A,DAT
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Bắt buộc (17.0 tín chỉ),,5,1050192,Giới thiệu ngành và hướng nghiệp,2,7.90,3.00,B+,DAT
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Bắt buộc (17.0 tín chỉ),,6,1090061,Tiếng Anh 1,3,5.70,2.00,C,DAT
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Bắt buộc (17.0 tín chỉ),,7,1130299,Triết học Mác - Lênin,3,7.50,3.00,B+,DAT
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Tự chọn (1.0 tín chỉ),Nhóm 01 (1.0 tín chỉ),8,1120172,Giáo dục thể chất 1 (Bóng đá 1),1,,,,CHUA_CO
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Tự chọn (1.0 tín chỉ),Nhóm 01 (1.0 tín chỉ),9,1120175,Giáo dục thể chất 1 (Bóng chuyền 1),1,10.00,4.00,A+,DAT
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Tự chọn (1.0 tín chỉ),Nhóm 01 (1.0 tín chỉ),10,1120178,Giáo dục thể chất 1 (Bóng rổ 1),1,,,,CHUA_CO
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Tự chọn (1.0 tín chỉ),Nhóm 01 (1.0 tín chỉ),11,1120181,Giáo dục thể chất 1 (Cầu lông 1),1,,,,CHUA_CO
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Tự chọn (1.0 tín chỉ),Nhóm 01 (1.0 tín chỉ),12,1120184,Giáo dục thể chất 1 (Võ cổ truyền Việt Nam 1),1,,,,CHUA_CO
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Tự chọn (1.0 tín chỉ),Nhóm 01 (1.0 tín chỉ),13,1120187,Giáo dục thể chất 1 (Võ Taekwondo 1),1,,,,CHUA_CO
+Học kỳ 1 (18.0 tín chỉ) - 2022-2023/HK01,Tự chọn (1.0 tín chỉ),Nhóm 01 (1.0 tín chỉ),14,1120190,Giáo dục thể chất 1 (Võ Karatedo 1),1,,,,CHUA_CO
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Bắt buộc (17.0 tín chỉ),,15,1050016,Hệ quản trị cơ sở dữ liệu,3,5.80,2.00,C,DAT
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Bắt buộc (17.0 tín chỉ),,16,1050133,Lập trình cơ bản,4,7.10,3.00,B+,DAT
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Bắt buộc (17.0 tín chỉ),,17,1090166,Tiếng Anh 2,4,5.10,2.00,C,DAT
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Bắt buộc (17.0 tín chỉ),,18,1130049,Pháp luật đại cương,2,6.40,2.50,B,DAT
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Bắt buộc (17.0 tín chỉ),,19,1130300,Kinh tế chính trị Mác - Lênin,2,8.20,3.50,A,DAT
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Bắt buộc (17.0 tín chỉ),,20,2030003,Kỹ năng giao tiếp,2,9.30,4.00,A+,DAT
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Tự chọn (1.0 tín chỉ),Nhóm 02 (1.0 tín chỉ),21,1120173,Giáo dục thể chất 2 (Bóng đá 2),1,,,,CHUA_CO
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Tự chọn (1.0 tín chỉ),Nhóm 02 (1.0 tín chỉ),22,1120176,Giáo dục thể chất 2 (Bóng chuyền 2),1,10.00,4.00,A+,DAT
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Tự chọn (1.0 tín chỉ),Nhóm 02 (1.0 tín chỉ),23,1120179,Giáo dục thể chất 2 (Bóng rổ 2),1,,,,CHUA_CO
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Tự chọn (1.0 tín chỉ),Nhóm 02 (1.0 tín chỉ),24,1120182,Giáo dục thể chất 2 (Cầu lông 2),1,,,,CHUA_CO
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Tự chọn (1.0 tín chỉ),Nhóm 02 (1.0 tín chỉ),25,1120185,Giáo dục thể chất 2 (Võ cổ truyền Việt Nam 2),1,,,,CHUA_CO
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Tự chọn (1.0 tín chỉ),Nhóm 02 (1.0 tín chỉ),26,1120188,Giáo dục thể chất 2 (Võ Taekwondo 2),1,,,,CHUA_CO
+Học kỳ 2 (18.0 tín chỉ) - 2022-2023/HK02,Tự chọn (1.0 tín chỉ),Nhóm 02 (1.0 tín chỉ),27,1120191,Giáo dục thể chất 2 (Võ Karatedo 2),1,,,,CHUA_CO
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Bắt buộc (18.0 tín chỉ),,28,1010126,Xác suất thống kê,3,6.50,2.50,B,DAT
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Bắt buộc (18.0 tín chỉ),,29,1050003,Cấu trúc dữ liệu và giải thuật,4,5.30,2.00,C,DAT
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Bắt buộc (18.0 tín chỉ),,30,1050024,Lập trình hướng đối tượng,3,8.80,3.50,A,DAT
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Bắt buộc (18.0 tín chỉ),,31,1050075,Toán rời rạc,3,4.40,1.50,D,DAT
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Bắt buộc (18.0 tín chỉ),,32,1050228,Cơ sở dữ liệu,3,6.30,2.50,B,DAT
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Bắt buộc (18.0 tín chỉ),,33,1130301,Chủ nghĩa xã hội khoa học,2,6.90,2.50,B,DAT
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Tự chọn (1.0 tín chỉ),Nhóm 03 (1.0 tín chỉ),34,1120174,Giáo dục thể chất 3 (Bóng đá 3),1,,,,CHUA_CO
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Tự chọn (1.0 tín chỉ),Nhóm 03 (1.0 tín chỉ),35,1120177,Giáo dục thể chất 3 (Bóng chuyền 3),1,10.00,4.00,A+,DAT
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Tự chọn (1.0 tín chỉ),Nhóm 03 (1.0 tín chỉ),36,1120180,Giáo dục thể chất 3 (Bóng rổ 3),1,,,,CHUA_CO
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Tự chọn (1.0 tín chỉ),Nhóm 03 (1.0 tín chỉ),37,1120183,Giáo dục thể chất 3 (Cầu lông 3),1,,,,CHUA_CO
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Tự chọn (1.0 tín chỉ),Nhóm 03 (1.0 tín chỉ),38,1120186,Giáo dục thể chất 3 (Võ cổ truyền Việt Nam 3),1,,,,CHUA_CO
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Tự chọn (1.0 tín chỉ),Nhóm 03 (1.0 tín chỉ),39,1120189,Giáo dục thể chất 3 (Võ Taekwondo 3),1,,,,CHUA_CO
+Học kỳ 3 (19.0 tín chỉ) - 2023-2024/HK01,Tự chọn (1.0 tín chỉ),Nhóm 03 (1.0 tín chỉ),40,1120192,Giáo dục thể chất 3 (Võ Karatedo 3),1,,,,CHUA_CO
+Học kỳ 4 (18.0 tín chỉ) - 2023-2024/HK02,Bắt buộc (18.0 tín chỉ),,41,1050021,Kiến trúc máy tính,3,5.40,2.00,C,DAT
+Học kỳ 4 (18.0 tín chỉ) - 2023-2024/HK02,Bắt buộc (18.0 tín chỉ),,42,1050194,Lập trình ứng dụng Desktop,3,5.20,2.00,C,DAT
+Học kỳ 4 (18.0 tín chỉ) - 2023-2024/HK02,Bắt buộc (18.0 tín chỉ),,43,1050197,Mạng máy tính,3,7.00,3.00,B+,DAT
+Học kỳ 4 (18.0 tín chỉ) - 2023-2024/HK02,Bắt buộc (18.0 tín chỉ),,44,1050200,Lập trình ứng dụng Web,3,5.40,2.00,C,DAT
+Học kỳ 4 (18.0 tín chỉ) - 2023-2024/HK02,Bắt buộc (18.0 tín chỉ),,45,1050202,Phân tích và thiết kế hệ thống thông tin,3,5.80,2.00,C,DAT
+Học kỳ 4 (18.0 tín chỉ) - 2023-2024/HK02,Bắt buộc (18.0 tín chỉ),,46,1050261,Thực tập nhận thức,1,8.00,3.50,A,DAT
+Học kỳ 4 (18.0 tín chỉ) - 2023-2024/HK02,Bắt buộc (18.0 tín chỉ),,47,1130302,Lịch sử Đảng Cộng sản Việt Nam,2,7.00,3.00,B+,DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,48,1050196,Hệ điều hành,3,8.7,3.5,A,DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,49,1050201,Công nghệ phần mềm,3,6.90,2.50,B,DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,50,1050264,Phân tích và thiết kế phần mềm,3,7.20,3.00,B+,DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,51,1050277,Tiếng Anh cho CNTT,2,6.70,2.50,B,DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,52,1120168,Giáo dục quốc phòng - An ninh 1,3,0.00,0.00,F,KHONG_DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,53,1120169,Giáo dục quốc phòng - An ninh 2,2,0.00,0.00,F,KHONG_DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,54,1120170,Giáo dục quốc phòng - An ninh 3,2,0.00,0.00,F,KHONG_DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,55,1120171,Giáo dục quốc phòng - An ninh 4,2,0.00,0.00,F,KHONG_DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,56,1130091,Tư tưởng Hồ Chí Minh,2,7.30,3.00,B+,DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Bắt buộc (15.0 tín chỉ),,57,1150422,Khởi nghiệp,2,6.30,2.50,B,DAT
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Tự chọn (3.0 tín chỉ),Nhóm 04 (3.0 tín chỉ),58,1050262,Công nghệ Java,3,,,,CHUA_CO
+Học kỳ 5 (18.0 tín chỉ) - 2024-2025/HK01,Tự chọn (3.0 tín chỉ),Nhóm 04 (3.0 tín chỉ),59,1050263,Công nghệ dotNET,3,0.00,0.00,F,KHONG_DAT
+Học kỳ 6 (18.0 tín chỉ) - 2024-2025/HK02,Bắt buộc (15.0 tín chỉ),,60,1050205,Đảm bảo chất lượng phần mềm,3,8.10,3.50,A,DAT
+Học kỳ 6 (18.0 tín chỉ) - 2024-2025/HK02,Bắt buộc (15.0 tín chỉ),,61,1050206,Lập trình ứng dụng Mobile,3,5.00,2.00,C,DAT
+Học kỳ 6 (18.0 tín chỉ) - 2024-2025/HK02,Bắt buộc (15.0 tín chỉ),,62,1050210,Phát triển phần mềm hướng đối tượng,3,7.50,3.00,B+,DAT
+Học kỳ 6 (18.0 tín chỉ) - 2024-2025/HK02,Bắt buộc (15.0 tín chỉ),,63,1050216,Mẫu thiết kế phần mềm,3,7.40,3.00,B+,DAT
+Học kỳ 6 (18.0 tín chỉ) - 2024-2025/HK02,Bắt buộc (15.0 tín chỉ),,64,1050220,Trí tuệ nhân tạo,3,7.00,3.00,B+,DAT
+Học kỳ 6 (18.0 tín chỉ) - 2024-2025/HK02,Tự chọn (3.0 tín chỉ),Nhóm 05 (3.0 tín chỉ),65,1050207,Quản lý dự án phần mềm,3,6.90,2.50,B,DAT
+Học kỳ 6 (18.0 tín chỉ) - 2024-2025/HK02,Tự chọn (3.0 tín chỉ),Nhóm 05 (3.0 tín chỉ),66,1050211,Phát triển phần mềm nguồn mở,3,,,,CHUA_CO
+Học kỳ 7 (17.0 tín chỉ) - 2025-2026/HK01,Bắt buộc (14.0 tín chỉ),,67,1050213,Một số vấn đề hiện đại của CNPM,2,7.20,3.00,B+,DAT
+Học kỳ 7 (17.0 tín chỉ) - 2025-2026/HK01,Bắt buộc (14.0 tín chỉ),,68,1050214,Đồ án công nghệ phần mềm 1,3,8,3.5,A,DAT
+Học kỳ 7 (17.0 tín chỉ) - 2025-2026/HK01,Bắt buộc (14.0 tín chỉ),,69,1050215,Kiến trúc hướng dịch vụ,3,8.10,3.50,A,DAT
+Học kỳ 7 (17.0 tín chỉ) - 2025-2026/HK01,Bắt buộc (14.0 tín chỉ),,70,1050265,Phân tích dữ liệu lớn,3,6.5,2.5,B,DAT
+Học kỳ 7 (17.0 tín chỉ) - 2025-2026/HK01,Bắt buộc (14.0 tín chỉ),,71,1050267,Công nghệ Web,3,0,0,F,KHONG_DAT
+Học kỳ 7 (17.0 tín chỉ) - 2025-2026/HK01,Tự chọn (3.0 tín chỉ),Nhóm 06 (3.0 tín chỉ),72,1050167,Lập trình Game,3,,,,CHUA_CO
+Học kỳ 7 (17.0 tín chỉ) - 2025-2026/HK01,Tự chọn (3.0 tín chỉ),Nhóm 06 (3.0 tín chỉ),73,1050266,Lập trình hệ thống nhúng,3,8.2,3.5,A,DAT
+Học kỳ 8 (16.0 tín chỉ) - 2025-2026/HK02,Bắt buộc (10.0 tín chỉ),,74,1050219,Đồ án công nghệ phần mềm 2,4,7.5,3,B+,DAT
+Học kỳ 8 (16.0 tín chỉ) - 2025-2026/HK02,Bắt buộc (10.0 tín chỉ),,75,1050221,Điện toán đám mây,3,5.3,2,C,DAT
+Học kỳ 8 (16.0 tín chỉ) - 2025-2026/HK02,Bắt buộc (10.0 tín chỉ),,76,1050222,Học máy và ứng dụng,3,8.5,3.5,A,DAT
+Học kỳ 8 (16.0 tín chỉ) - 2025-2026/HK02,Tự chọn (6.0 tín chỉ),Nhóm 07 (6.0 tín chỉ),77,1050268,Lập trình mạng,3,7.4,3,B+,DAT
+Học kỳ 8 (16.0 tín chỉ) - 2025-2026/HK02,Tự chọn (6.0 tín chỉ),Nhóm 07 (6.0 tín chỉ),78,1050269,Lập trình trí tuệ nhân tạo,3,8.6,3.5,A,DAT
+Học kỳ 8 (16.0 tín chỉ) - 2025-2026/HK02,Tự chọn (6.0 tín chỉ),Nhóm 07 (6.0 tín chỉ),79,1050270,Khai phá dữ liệu,3,,,,CHUA_CO
+Học kỳ 8 (16.0 tín chỉ) - 2025-2026/HK02,Tự chọn (6.0 tín chỉ),Nhóm 07 (6.0 tín chỉ),80,1050271,An toàn và bảo mật hệ thống thông tin,3,,,,CHUA_CO
+Học kỳ 9 (11.0 tín chỉ) - 2026-2027/HK01,Bắt buộc (11.0 tín chỉ),,81,1050272,Thực tập tốt nghiệp,3,,,,CHUA_CO
+Học kỳ 9 (11.0 tín chỉ) - 2026-2027/HK01,Bắt buộc (11.0 tín chỉ),,82,1050331,Đồ án tốt nghiệp,8,,,,CHUA_CO

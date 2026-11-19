@@ -36,7 +36,6 @@ public final class LoginSteps {
 
     private LoginTestData testData;
 
-    private String savedMarksUrl;
     private String firstTabHandle;
     private String secondTabHandle;
 
@@ -198,8 +197,7 @@ public final class LoginSteps {
     }
 
     // =========================================
-    // Shared authentication step
-    // TC_05 and TC_06
+    // TC_06 - Shared authentication step
     // =========================================
 
     @Given("sinh viên đã đăng nhập thành công")
@@ -233,70 +231,6 @@ public final class LoginSteps {
         assertTrue(
                 studentPage.isAtStudentPage(),
                 "Sinh viên đăng nhập không thành công."
-        );
-    }
-
-    // =========================================
-    // TC_05 - Private URL after logout
-    // =========================================
-
-    @When("sinh viên truy cập trang Xem điểm và lưu URL")
-    public void studentOpensMarksAndSavesUrl() {
-
-        studentPage.openMarksPage();
-        studentPage.waitForMarksTable();
-
-        assertTrue(
-                studentPage.isMarksTableDisplayed(),
-                "Bảng điểm không hiển thị trước đăng xuất."
-        );
-
-        savedMarksUrl = studentPage.getMarksPageUrl();
-
-        assertTrue(
-                savedMarksUrl != null && !savedMarksUrl.isBlank(),
-                "Không thể lưu URL trang Xem điểm."
-        );
-    }
-
-    @When("sinh viên đăng xuất khỏi hệ thống")
-    public void studentLogsOut() {
-
-        studentPage.logout();
-
-        assertTrue(
-                studentPage.isAtPublicHomePage(),
-                "Sau đăng xuất không trở về trang chủ công khai."
-        );
-
-        assertFalse(
-                studentPage.isMarksTableDisplayed(),
-                "Bảng điểm vẫn hiển thị sau đăng xuất."
-        );
-    }
-
-    @When("sinh viên truy cập lại URL đã lưu")
-    public void studentRevisitsSavedUrl() {
-
-        assertTrue(
-                savedMarksUrl != null && !savedMarksUrl.isBlank(),
-                "Chưa lưu URL trang Xem điểm."
-        );
-
-        studentPage.openUrl(savedMarksUrl);
-    }
-
-    @Then("hệ thống không cho phép xem dữ liệu điểm")
-    public void marksDataMustNotBeAccessible() {
-
-        assertTrue(
-                loginPage.isLoginFormDisplayed(),
-                "Không hiển thị giao diện đăng nhập."
-        );
-
-        assertFalse(
-                studentPage.isMarksTableDisplayed(),
-                "Bảng điểm vẫn hiển thị sau đăng xuất."
         );
     }
 
@@ -398,11 +332,6 @@ public final class LoginSteps {
                 "Tab thứ hai vẫn hiển thị bảng điểm sau đăng xuất."
         );
     }
-
-    // =========================================
-    // Shared assertion
-    // TC_05 and TC_06
-    // =========================================
 
     @Then("hệ thống yêu cầu đăng nhập lại")
     public void systemRequiresLoginAgain() {

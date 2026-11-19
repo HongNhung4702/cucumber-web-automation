@@ -5,7 +5,7 @@ import com.hongnhung.cucumberweb.assertions.exams.ExamScheduleComparator;
 import com.hongnhung.cucumberweb.config.ConfigManager;
 import com.hongnhung.cucumberweb.models.exams.ExamRecord;
 import com.hongnhung.cucumberweb.pages.auth.LoginPage;
-import com.hongnhung.cucumberweb.pages.student.ExamSchedulePage;
+import com.hongnhung.cucumberweb.pages.student.exams.ExamSchedulePage;
 import com.hongnhung.cucumberweb.pages.student.StudentPage;
 import com.hongnhung.cucumberweb.testdata.exams.ExamBaselineReader;
 

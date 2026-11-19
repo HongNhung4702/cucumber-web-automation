@@ -3,7 +3,7 @@ package com.hongnhung.cucumberweb.steps.marks;
 
 import com.hongnhung.cucumberweb.assertions.marks.MarksComparator;
 import com.hongnhung.cucumberweb.models.marks.MarkRecord;
-import com.hongnhung.cucumberweb.pages.student.MarksPage;
+import com.hongnhung.cucumberweb.pages.student.marks.MarksPage;
 import com.hongnhung.cucumberweb.testdata.marks.MarksBaselineReader;
 
 import io.cucumber.java.en.When;

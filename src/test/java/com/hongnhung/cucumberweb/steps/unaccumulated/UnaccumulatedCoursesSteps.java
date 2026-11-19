@@ -3,7 +3,7 @@ package com.hongnhung.cucumberweb.steps.unaccumulated;
 
 import com.hongnhung.cucumberweb.assertions.unaccumulated.UnaccumulatedCourseComparator;
 import com.hongnhung.cucumberweb.models.unaccumulated.UnaccumulatedCourseRecord;
-import com.hongnhung.cucumberweb.pages.student.UnaccumulatedCoursesPage;
+import com.hongnhung.cucumberweb.pages.student.unaccumulated.UnaccumulatedCoursesPage;
 import com.hongnhung.cucumberweb.testdata.unaccumulated.UnaccumulatedBaselineReader;
 
 import io.cucumber.java.en.And;

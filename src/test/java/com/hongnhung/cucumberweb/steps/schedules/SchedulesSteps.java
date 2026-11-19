@@ -3,7 +3,7 @@ package com.hongnhung.cucumberweb.steps.schedules;
 
 import com.hongnhung.cucumberweb.assertions.schedules.SchedulesComparator;
 import com.hongnhung.cucumberweb.models.schedules.ScheduleRecord;
-import com.hongnhung.cucumberweb.pages.student.SchedulesPage;
+import com.hongnhung.cucumberweb.pages.student.schedules.SchedulesPage;
 import com.hongnhung.cucumberweb.testdata.schedules.SchedulesBaselineReader;
 
 import io.cucumber.java.en.And;

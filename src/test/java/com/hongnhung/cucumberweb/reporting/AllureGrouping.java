@@ -9,213 +9,298 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Map.entry;
+
 /**
- * Cấu hình phân nhóm Allure tập trung.
+ * Phan nhom 32 Test Case Cucumber trong Allure.
  *
- * Áp dụng cho:
- * - Cucumber: Kiểm thử giao diện Web
- * - JUnit: Kiểm chứng bộ so sánh dữ liệu
+ * Cap 1: Kiem thu he thong dao tao QNU
+ * Cap 2: Nhom chuc nang
+ * Cap 3: Ma TC va ten Test Case
+ * Cap 4: Scenario
  *
- * Cấu trúc:
- * Hệ thống đào tạo QNU
- *   -> Test Case
- *       -> Framework
- *           -> Test Result
+ * Chi thay doi metadata Allure, khong thay doi test.
  */
 public final class AllureGrouping
         implements TestLifecycleListener {
 
-    // =========================================
-    // 1. TÊN NHÓM ALLURE
-    // =========================================
-
     private static final String ROOT =
             "Kiểm thử hệ thống đào tạo QNU";
 
-    private static final String CUCUMBER =
-            "Cucumber - Kiểm thử giao diện";
+    private record TestCaseInfo(
+            String group,
+            String name
+    ) {
+    }
 
-    private static final String JUNIT =
-            "JUnit - Kiểm chứng Comparator";
+    private static final String AUTH =
+            "01 - Đăng nhập và bảo mật";
 
-    // =========================================
-    // 2. DANH SÁCH TEST CASE
-    // =========================================
+    private static final String NOTIFICATIONS =
+            "02 - Thông báo cá nhân";
 
-    private static final Map<String, String> TEST_CASE_NAMES =
-            Map.of(
-                    "TC_17", "Học phần chưa tích lũy",
-                    "TC_21", "Thời khóa biểu lớp học phần",
-                    "TC_28", "Lịch thi",
-                    "TC_33", "Kết quả học tập",
-                    "TC_38", "Thời khóa biểu giảng viên"
+    private static final String UNACCUMULATED =
+            "03 - Học phần chưa tích lũy";
+
+    private static final String GRADUATION =
+            "04 - Tốt nghiệp";
+
+    private static final String PROGRESS =
+            "05 - Tiến độ học tập";
+
+    private static final String SCHEDULES =
+            "06 - Thời khóa biểu sinh viên và phòng học";
+
+    private static final String EXAMS =
+            "07 - Lịch thi";
+
+    private static final String MARKS =
+            "08 - Bảng điểm";
+
+    private static final String LECTURERS =
+            "09 - Thời khóa biểu giảng viên";
+
+    private static final Map<String, TestCaseInfo> TEST_CASES =
+            Map.ofEntries(
+
+                    // Dang nhap va bao mat
+                    entry("TC_01", new TestCaseInfo(
+                            AUTH, "Đăng nhập thành công"
+                    )),
+                    entry("TC_02", new TestCaseInfo(
+                            AUTH, "Đăng nhập sai mật khẩu"
+                    )),
+                    entry("TC_03", new TestCaseInfo(
+                            AUTH, "Đăng nhập sai tên đăng nhập"
+                    )),
+                    entry("TC_04", new TestCaseInfo(
+                            AUTH, "Kiểm tra che mật khẩu"
+                    )),
+                    entry("TC_06", new TestCaseInfo(
+                            AUTH, "Vô hiệu hóa phiên giữa hai tab"
+                    )),
+
+                    // Thong bao ca nhan
+                    entry("TC_10", new TestCaseInfo(
+                            NOTIFICATIONS,
+                            "Hiển thị thông báo cá nhân"
+                    )),
+                    entry("TC_11", new TestCaseInfo(
+                            NOTIFICATIONS,
+                            "Tìm kiếm thông báo hợp lệ"
+                    )),
+                    entry("TC_12", new TestCaseInfo(
+                            NOTIFICATIONS,
+                            "Tìm kiếm thông báo không tồn tại"
+                    )),
+
+                    // Hoc phan chua tich luy
+                    entry("TC_17", new TestCaseInfo(
+                            UNACCUMULATED,
+                            "Danh sách học phần chưa tích lũy"
+                    )),
+
+                    // Tot nghiep
+                    entry("TC_18", new TestCaseInfo(
+                            GRADUATION,
+                            "Điều kiện tốt nghiệp"
+                    )),
+                    entry("TC_19", new TestCaseInfo(
+                            GRADUATION,
+                            "Kết quả xét tốt nghiệp"
+                    )),
+
+                    // Tien do hoc tap
+                    entry("TC_20", new TestCaseInfo(
+                            PROGRESS,
+                            "Kiểm tra tiến độ học tập"
+                    )),
+
+                    // Thoi khoa bieu sinh vien va phong hoc
+                    entry("TC_21", new TestCaseInfo(
+                            SCHEDULES,
+                            "Thời khóa biểu lớp học phần"
+                    )),
+                    entry("TC_22", new TestCaseInfo(
+                            SCHEDULES,
+                            "Thời khóa biểu theo tuần"
+                    )),
+                    entry("TC_23", new TestCaseInfo(
+                            SCHEDULES,
+                            "Thời khóa biểu theo phòng"
+                    )),
+                    entry("TC_24", new TestCaseInfo(
+                            SCHEDULES,
+                            "Chuyển tuần thời khóa biểu sinh viên"
+                    )),
+                    entry("TC_25", new TestCaseInfo(
+                            SCHEDULES,
+                            "Chuyển tuần thời khóa biểu phòng học"
+                    )),
+                    entry("TC_26", new TestCaseInfo(
+                            SCHEDULES,
+                            "Bản xem trước thời khóa biểu sinh viên"
+                    )),
+
+                    // Lich thi
+                    entry("TC_28", new TestCaseInfo(
+                            EXAMS,
+                            "Lịch thi theo năm học và học kỳ"
+                    )),
+                    entry("TC_29", new TestCaseInfo(
+                            EXAMS,
+                            "Thay đổi năm học lịch thi"
+                    )),
+                    entry("TC_30", new TestCaseInfo(
+                            EXAMS,
+                            "Thay đổi học kỳ lịch thi"
+                    )),
+                    entry("TC_31", new TestCaseInfo(
+                            EXAMS,
+                            "Tra cứu lịch thi theo khoảng ngày"
+                    )),
+                    entry("TC_32", new TestCaseInfo(
+                            EXAMS,
+                            "Tra cứu lịch thi với khoảng ngày không hợp lệ"
+                    )),
+
+                    // Bang diem
+                    entry("TC_33", new TestCaseInfo(
+                            MARKS,
+                            "Kết quả học tập theo học kỳ"
+                    )),
+                    entry("TC_34", new TestCaseInfo(
+                            MARKS,
+                            "Bảng điểm theo chương trình đào tạo"
+                    )),
+                    entry("TC_35", new TestCaseInfo(
+                            MARKS,
+                            "Chi tiết điểm học phần"
+                    )),
+                    entry("TC_36", new TestCaseInfo(
+                            MARKS,
+                            "Chuyển đổi học kỳ xem điểm"
+                    )),
+
+                    // Thoi khoa bieu giang vien
+                    entry("TC_38", new TestCaseInfo(
+                            LECTURERS,
+                            "Tra cứu thời khóa biểu giảng viên"
+                    )),
+                    entry("TC_39", new TestCaseInfo(
+                            LECTURERS,
+                            "Tra cứu giảng viên không hợp lệ"
+                    )),
+                    entry("TC_40", new TestCaseInfo(
+                            LECTURERS,
+                            "Làm mới điều kiện tra cứu"
+                    )),
+                    entry("TC_41", new TestCaseInfo(
+                            LECTURERS,
+                            "Tra cứu lại sau khi làm mới"
+                    )),
+                    entry("TC_42", new TestCaseInfo(
+                            LECTURERS,
+                            "Tra cứu giảng viên liên tiếp A-B-A"
+                    ))
             );
-
-    // =========================================
-    // 3. ÁNH XẠ CLASS JUNIT VỚI TEST CASE
-    // =========================================
-
-    private static final Map<String, String> JUNIT_CLASSES =
-            Map.of(
-                    "ExamScheduleComparatorTest", "TC_28",
-                    "MarksComparatorTest", "TC_33",
-                    "SchedulesComparatorTest", "TC_21",
-                    "LecturerScheduleComparatorTest", "TC_38",
-                    "UnaccumulatedCourseComparatorTest", "TC_17"
-            );
-
-    // =========================================
-    // 4. XỬ LÝ KẾT QUẢ TRƯỚC KHI ALLURE GHI
-    // =========================================
 
     @Override
     public void beforeTestWrite(TestResult result) {
 
-        String framework = getFramework(result);
-
-        String testCaseId;
-        String subSuite;
-
-        if ("cucumber4jvm".equals(framework)) {
-
-            testCaseId = getCucumberTestCaseId(result);
-            subSuite = CUCUMBER;
-
-        } else if ("junit-platform".equals(framework)) {
-
-            testCaseId = getJUnitTestCaseId(result);
-            subSuite = JUNIT;
-
-        } else {
-
+        if (!isCucumberResult(result)) {
             return;
         }
 
-        String testCaseName =
-                TEST_CASE_NAMES.get(testCaseId);
+        String testCaseId = getTestCaseId(result);
 
-        if (testCaseName == null) {
+        if (testCaseId == null) {
+            return;
+        }
 
-            // Không thay đổi các bài kiểm thử khác.
+        TestCaseInfo info = TEST_CASES.get(testCaseId);
+
+        if (info == null) {
             return;
         }
 
         List<Label> labels = result.getLabels();
 
         if (labels == null) {
-
             labels = new ArrayList<>();
             result.setLabels(labels);
         }
 
-        // Xóa toàn bộ nhãn phân nhóm cũ
-        // do adapter hoặc cấu hình trước đó sinh ra.
-
+        // Xoa nhan phan nhom do Cucumber gan truoc do.
         labels.removeIf(label ->
                 "parentSuite".equals(label.getName())
                         || "suite".equals(label.getName())
                         || "subSuite".equals(label.getName())
         );
 
-        // Cấp 1: Hệ thống
-
+        // Cap 1: He thong
         labels.add(
                 new Label()
                         .setName("parentSuite")
                         .setValue(ROOT)
         );
 
-        // Cấp 2: Test Case
-
+        // Cap 2: Nhom chuc nang
         labels.add(
                 new Label()
                         .setName("suite")
-                        .setValue(
-                                testCaseId + " - " + testCaseName
-                        )
+                        .setValue(info.group())
         );
 
-        // Cấp 3: Công cụ kiểm thử
-
+        // Cap 3: Test Case
         labels.add(
                 new Label()
                         .setName("subSuite")
-                        .setValue(subSuite)
+                        .setValue(
+                                testCaseId + " - " + info.name()
+                        )
+        );
+
+        // Ten Scenario duoc Cucumber cung cap san.
+    }
+
+    private boolean isCucumberResult(TestResult result) {
+
+        List<Label> labels = result.getLabels();
+
+        if (labels == null) {
+            return false;
+        }
+
+        return labels.stream().anyMatch(label ->
+                "framework".equals(label.getName())
+                        && "cucumber4jvm".equals(
+                        label.getValue()
+                )
         );
     }
 
-    // =========================================
-    // 5. XÁC ĐỊNH FRAMEWORK
-    // =========================================
+    private String getTestCaseId(TestResult result) {
 
-    private String getFramework(TestResult result) {
+        List<Label> labels = result.getLabels();
 
-        if (result.getLabels() == null) {
-            return "";
-        }
-
-        return result.getLabels()
-                .stream()
-                .filter(label ->
-                        "framework".equals(label.getName())
-                )
-                .map(Label::getValue)
-                .filter(value -> value != null)
-                .findFirst()
-                .orElse("");
-    }
-
-    // =========================================
-    // 6. XÁC ĐỊNH TEST CASE CUCUMBER
-    // =========================================
-
-    private String getCucumberTestCaseId(
-            TestResult result
-    ) {
-
-        if (result.getLabels() == null) {
+        if (labels == null) {
             return null;
         }
 
-        return result.getLabels()
-                .stream()
+        return labels.stream()
                 .filter(label ->
                         "tag".equals(label.getName())
                 )
                 .map(Label::getValue)
                 .filter(value -> value != null)
-                .filter(TEST_CASE_NAMES::containsKey)
+                .map(value ->
+                        value.startsWith("@")
+                                ? value.substring(1)
+                                : value
+                )
+                .filter(TEST_CASES::containsKey)
                 .findFirst()
                 .orElse(null);
-    }
-
-    // =========================================
-    // 7. XÁC ĐỊNH TEST CASE JUNIT
-    // =========================================
-
-    private String getJUnitTestCaseId(
-            TestResult result
-    ) {
-
-        String fullName = result.getFullName();
-
-        if (fullName == null) {
-            return null;
-        }
-
-        for (Map.Entry<String, String> entry
-                : JUNIT_CLASSES.entrySet()) {
-
-            String className = entry.getKey();
-
-            if (fullName.contains(
-                    "." + className + "."
-            )) {
-
-                return entry.getValue();
-            }
-        }
-
-        return null;
     }
 }

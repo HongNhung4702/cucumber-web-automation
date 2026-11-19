@@ -16,68 +16,27 @@
 
     <properties>
 
-        <!-- Java -->
         <maven.compiler.release>17</maven.compiler.release>
 
-        <!-- Encoding -->
-        <project.build.sourceEncoding>
-            UTF-8
-        </project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <project.reporting.outputEncoding>
-            UTF-8
-        </project.reporting.outputEncoding>
+        <cucumber.version>7.34.8</cucumber.version>
+        <selenium.version>4.49.0</selenium.version>
+        <junit.version>6.1.2</junit.version>
+        <allure.version>2.35.3</allure.version>
+        <commons.csv.version>1.14.1</commons.csv.version>
 
-        <!-- Dependencies -->
-        <cucumber.version>
-            7.34.8
-        </cucumber.version>
-
-        <selenium.version>
-            4.49.0
-        </selenium.version>
-
-        <junit.version>
-            6.1.2
-        </junit.version>
-
-        <allure.version>
-            2.35.3
-        </allure.version>
-
-        <commons.csv.version>
-            1.14.1
-        </commons.csv.version>
-
-        <!-- Maven plugins -->
-        <maven.compiler.plugin.version>
-            3.16.0
-        </maven.compiler.plugin.version>
-
-        <maven.surefire.plugin.version>
-            3.6.0
-        </maven.surefire.plugin.version>
-
-        <allure.maven.plugin.version>
-            3.0.2
-        </allure.maven.plugin.version>
-
-        <allure.report.version>
-            2.39.0
-        </allure.report.version>
+        <maven.compiler.plugin.version>3.16.0</maven.compiler.plugin.version>
+        <maven.surefire.plugin.version>3.6.0</maven.surefire.plugin.version>
+        <allure.maven.plugin.version>3.0.2</allure.maven.plugin.version>
+        <allure.report.version>2.39.0</allure.report.version>
 
     </properties>
 
-
-    <!-- =====================================================
-         Dependency Management
-         ===================================================== -->
-
     <dependencyManagement>
-
         <dependencies>
 
-            <!-- Cucumber BOM -->
             <dependency>
                 <groupId>io.cucumber</groupId>
                 <artifactId>cucumber-bom</artifactId>
@@ -86,7 +45,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- JUnit BOM -->
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
@@ -95,7 +53,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Allure BOM -->
             <dependency>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-bom</artifactId>
@@ -105,17 +62,11 @@
             </dependency>
 
         </dependencies>
-
     </dependencyManagement>
-
-
-    <!-- =====================================================
-         Dependencies
-         ===================================================== -->
 
     <dependencies>
 
-        <!-- Cucumber -->
+        <!-- Cucumber BDD -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -134,8 +85,7 @@
             <scope>test</scope>
         </dependency>
 
-
-        <!-- Selenium -->
+        <!-- Selenium WebDriver -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -143,8 +93,7 @@
             <scope>test</scope>
         </dependency>
 
-
-        <!-- JUnit Platform -->
+        <!-- JUnit Platform và Assertions -->
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite</artifactId>
@@ -157,22 +106,14 @@
             <scope>test</scope>
         </dependency>
 
-
-        <!-- Allure -->
+        <!-- Allure dành cho Cucumber -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber7-jvm</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit-platform</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-
-        <!-- CSV Test Data -->
+        <!-- Đọc dữ liệu CSV -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
@@ -182,79 +123,49 @@
 
     </dependencies>
 
-
-    <!-- =====================================================
-         Build
-         ===================================================== -->
-
     <build>
-
         <plugins>
 
             <!-- Java Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>
-                    ${maven.compiler.plugin.version}
-                </version>
-
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
-                    <release>
-                        ${maven.compiler.release}
-                    </release>
+                    <release>${maven.compiler.release}</release>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
-
-            <!-- Test Execution -->
+            <!-- Chạy kiểm thử -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>
-                    ${maven.surefire.plugin.version}
-                </version>
+                <version>${maven.surefire.plugin.version}</version>
 
                 <configuration>
                     <useModulePath>false</useModulePath>
-
-                    <argLine>
-                        -Dfile.encoding=UTF-8
-                    </argLine>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
             </plugin>
 
-
-            <!-- Allure Report -->
+            <!-- Xuất Allure Report -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>
-                    ${allure.maven.plugin.version}
-                </version>
+                <version>${allure.maven.plugin.version}</version>
 
                 <configuration>
-
-                    <reportVersion>
-                        ${allure.report.version}
-                    </reportVersion>
-
-                    <resultsDirectory>
-                        allure-results
-                    </resultsDirectory>
-
+                    <reportVersion>${allure.report.version}</reportVersion>
+                    <resultsDirectory>allure-results</resultsDirectory>
                     <reportDirectory>
                         ${project.build.directory}/allure-report
                     </reportDirectory>
-
                     <singleFile>true</singleFile>
-
                 </configuration>
             </plugin>
 
         </plugins>
-
     </build>
 
 </project>
